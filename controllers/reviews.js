@@ -2,7 +2,7 @@ const client = require('../connection')
 
 const getReviews = async (req, res, next) => {
     try {
-        const query = 'SELECT * FROM reviews ORDER BY date DESC';
+        const query = 'SELECT * FROM reviews ORDER BY date';
 
         const sessions = await client.query(query);
 
