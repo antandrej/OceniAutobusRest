@@ -31,10 +31,11 @@ const get10Reviews = async (req, res, next) => {
 };
 
 const getReviewsByType = async (req, res, next) => {
-    if(req.params.type === 'bus'){
         try {
             const params = [req.params.by];
-            const query = `SELECT * FROM reviews WHERE bus = $1 ORDER BY date DESC`;
+            const type = req.params.type;
+
+            const query = `SELECT * FROM reviews WHERE ${type} = $1 ORDER BY date DESC`;
     
             const sessions = await client.query(query, params);
     
@@ -45,38 +46,6 @@ const getReviewsByType = async (req, res, next) => {
         catch (err) {
             console.log(err.message);
         }
-    }
-    else if(req.params.type === 'name'){
-        try {
-            const params = [req.params.by];
-            const query = `SELECT * FROM reviews WHERE name = $1 ORDER BY date DESC`;
-    
-            const sessions = await client.query(query, params);
-    
-            res.send(sessions.rows);
-    
-            client.end;
-        }
-        catch (err) {
-            console.log(err.message);
-        }
-    }
-    
-    else if(req.params.type === 'stars'){
-        try {
-            const params = [req.params.by];
-            const query = `SELECT * FROM reviews WHERE stars = $1 ORDER BY date DESC`;
-    
-            const sessions = await client.query(query, params);
-    
-            res.send(sessions.rows);
-    
-            client.end;
-        }
-        catch (err) {
-            console.log(err.message);
-        }
-    }
 };
 
 
