@@ -1,5 +1,8 @@
 const { Client } = require('pg')
 
+const client = new Client(process.env.DATABASE_URL)
+
+/*
 const client = new Client({
     host: "localhost",
     user: "postgres",
@@ -7,5 +10,6 @@ const client = new Client({
     password: "admin",
     database: "oceniautobus"
 })
+*/
 
 module.exports = client
