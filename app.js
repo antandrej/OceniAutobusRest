@@ -6,6 +6,6 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors)
+app.use(cors())
 
 module.exports = app
